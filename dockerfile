@@ -1,4 +1,4 @@
-FROM node:21.7.1
+FROM node:20
 
 WORKDIR /app
 ##RUN apt-get update -y && apt-get install -y openssl
