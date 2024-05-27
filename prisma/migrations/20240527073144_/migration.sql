@@ -3,7 +3,7 @@ CREATE TABLE "user" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
     "name" TEXT,
-    "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
@@ -14,8 +14,8 @@ CREATE TABLE "task" (
     "id" SERIAL NOT NULL,
     "user_id" INTEGER NOT NULL,
     "title" TEXT NOT NULL,
-    "description" VARCHAR(255) NOT NULL,
-    "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "description" VARCHAR(255),
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "task_pkey" PRIMARY KEY ("id")
