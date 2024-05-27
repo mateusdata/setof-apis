@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for task-calendar-api on 2024-05-27T05:05:40-03:00
+# fly.toml app configuration file generated for task-calendar-api2s on 2024-05-27T05:29:00-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'task-calendar-api'
+app = 'task-calendar-api2s'
 primary_region = 'gig'
 
 [build]
