@@ -1,18 +1,15 @@
 import { Request, Response } from "express";
 import { prisma } from "../config/conection";
 import * as yup from "yup";
+import { z } from "zod";
+import { taskSchema } from "../schema/TaskSchema";
 
 class TodolistController {
 
-    async create(req: Request, res: Response) {
-        const taskSchema = yup.object({
-            user_id: yup.number().required(),
-            title: yup.string().required(),
-            description: yup.string().required()
-        });
+    async create(req: Request, res: Response) {              
 
         try {
-            const validate = await taskSchema.validate(req.body)
+            const validate =  taskSchema.parse(req.body)
             const task = await prisma.task.create({
                 data: {
                     title: validate.title,
@@ -44,15 +41,15 @@ class TodolistController {
 
     async update(req: Request, res: Response) {
 
-        const taskSchema = yup.object({
-            title: yup.string().required(),
-            description: yup.string().required()
-        }); 
+        const taskSchema = z.object({
+            title: z.string(),
+            description: z.string()
+        })
         const { id }: any = req.params;
 
 
         try {
-            const validate = await taskSchema.validate(req.body)
+            const validate =  taskSchema.parse(req.body)
 
             const task = await prisma.task.update({
                 data: {

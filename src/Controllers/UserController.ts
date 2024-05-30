@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { prisma } from "../config/conection";
 import * as yup from "yup";
+import { z } from "zod";
 import { userSchema } from "../schema/userSchema";
 
 class UserController {
@@ -8,7 +9,7 @@ class UserController {
 
     async create(req: Request, res: Response) {
         try {
-            const validate = await userSchema.validate(req.body)
+            const validate =  userSchema.parse(req.body)
             const user = await prisma.user.create({
                 data: {
                     name: validate.name,
@@ -41,7 +42,7 @@ class UserController {
         const { id }: any = req.params;
         
         try {
-            const validate = await userSchema.validate(req.body)
+            const validate =  userSchema.parse(req.body)
 
             const user = await prisma.user.update({
                 data: {
