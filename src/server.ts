@@ -16,7 +16,6 @@ app.use("/", taskRoutes)
 
 app.listen(PORT, () => {
     conectionDatabase();
-    console.log(`Servidor rodando com sucesso ${"http://localhost:3000"}:${PORT}`)
-
+    console.log(`Servidor rodando com sucesso ${"http://localhost:"}:${PORT}`)
 
 })
