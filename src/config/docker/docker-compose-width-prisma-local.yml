@@ -4,18 +4,16 @@ services:
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_USER: postgres3
+      POSTGRES_USER: postgresdocker
       POSTGRES_PASSWORD: 1234561
-      POSTGRES_DB: bancoestudo2
+      POSTGRES_DB: meubanco
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"  
+      - "5433:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres3 -d bancoestudo2"]
+      test: ["CMD-SHELL", "pg_isready -U postgresdocker -d meubanco"]
       interval: 10s
       timeout: 5s
       retries: 5
     command: ["postgres", "-c", "listen_addresses=*"]
-volumes:
-  postgres_data:
